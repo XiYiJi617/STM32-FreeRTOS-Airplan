@@ -91,14 +91,9 @@ void App_flight_get_euler_angle(void)
     // 也可以使用移植的四元数姿态解算
     Common_IMU_GetEulerAngle(&gyro_accel_data, &euler_angle, 0.006);
 
-
-    //俯仰角  横滚角  偏航角
-    // debug_printf(":%.2f,%.2f,%.2f\n", euler_angle.pitch, euler_angle.roll, euler_angle.yaw);
-
-    //打印加速度
-    // debug_printf(":%d,%d,%d\n",gyro_accel_data.accel.accel_x,gyro_accel_data.accel.accel_y,gyro_accel_data.accel.accel_z);
 }
 
+//此处将欧拉角拿来计算PID
 void App_flight_pid_process(void)
 {
     //俯仰角，外环的目标角度=>平稳飞行时是0，遥控飞行时是遥控器的值，0~1000需要转化为角度，最大为10°，范围±10°
@@ -132,6 +127,7 @@ void App_flight_pid_process(void)
 
 }
 
+//PID计算完成后，根据PID的输出值来控制电机转速进行姿态修正
 void App_flight_control_motor(void)
 {
     switch(flight_state)
@@ -192,6 +188,7 @@ void App_flight_control_motor(void)
 	Int_motor_set_speed(&right_bottom_motor);
 }
 
+//从激光测距仪里拿到数据计算pid
 void App_flight_fix_height_pid_process(void)
 {
     //24ms一次

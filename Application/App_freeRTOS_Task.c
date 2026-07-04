@@ -61,8 +61,8 @@ void App_freeRTOS_start(void)
 //电源任务
 void power_task(void *pvParameters)
 {
-	TickType_t xLastWakeTime;
-	xLastWakeTime = xTaskGetTickCount();
+	// TickType_t xLastWakeTime;
+	// xLastWakeTime = xTaskGetTickCount();
 	while(1)
 	{
 		//遥控器发送关机指令会发送任务通知，在这里接住通知做判断即可
