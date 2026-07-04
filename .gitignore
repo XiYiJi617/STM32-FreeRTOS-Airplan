@@ -1,0 +1,34 @@
+# Keil 编译产物
+*.o
+*.d
+*.crf
+*.axf
+*.hex
+*.bin
+*.lst
+*.map
+*.htm
+*.dep
+*.lnp
+*.sct
+*.iex
+
+# Keil 工程临时文件
+*.uvguix.*
+*.uvoptx
+*.scvd
+JLinkLog.txt
+JLinkSettings.ini
+DebugConfig/
+
+# VS Code 插件日志
+.vscode/keil-assistant.log
+
+# 其他常见忽略
+*.bak
+*.tmp
+
+# VS Code 日志和临时文件
+.vscode/uv4.log
+.vscode/uv4.log.lock
+.vscode/*.log
